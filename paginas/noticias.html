@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Notícias | Barrueco Advogados</title>
+    <style>
+        /* Paleta de cores reformulada baseada em #695643 */
+        :root {
+            --primary: #695643;           /* Cor base fornecida */
+            --primary-dark: #4a3c2e;      /* Tom mais escuro */
+            --primary-light: #857865;     /* Tom mais claro */
+            --secondary: #8b7355;         /* Complementar quente */
+            --accent: #a68b5b;            /* Dourado suave */
+            --tertiary: #5d4e3a;          /* Tom intermediário */
+            --light: #faf9f7;             /* Bege muito claro */
+            --light-gray: #f2f0ec;        /* Cinza bege */
+            --medium-gray: #d4d0c8;       /* Cinza médio */
+            --dark: #2d251a;              /* Marrom escuro */
+            --white: #ffffff;             /* Branco puro */
+            --text-light: #6b635a;        /* Texto claro */
+            --text-dark: #3d3529;         /* Texto escuro */
+            --shadow-light: rgba(105, 86, 67, 0.1);
+            --shadow-medium: rgba(105, 86, 67, 0.2);
+            --shadow-dark: rgba(105, 86, 67, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+/* Header */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            position: fixed;
+            height: 100px;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 20px var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 55px;
+        }
+
+        .logo h1 {
+            margin-left: 10px;
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* Navegação */
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        .menu-link {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .menu-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #c2a661;
+            transition: width 0.3s ease;
+        }
+
+        .menu-link:hover::after,
+        .menu-link.active::after {
+            width: 100%;
+        }
+
+        .menu-link:hover,
+        .menu-link.active {
+            color: #f4f4f4;
+        }
+
+        #btn-header {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--white);
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-light);
+        }
+
+        #btn-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+        }
+
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 180px;
+            box-shadow: 0 8px 25px var(--shadow-medium);
+            z-index: 101;
+            border-radius: 8px;
+            padding: 8px 0;
+            border: 1px solid var(--light-gray);
+        }
+
+        .dropdown:hover .submenu {
+            display: block;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--white);
+            min-width: 180px;
+            box-shadow: 0 8px 25px var(--shadow-medium);
+            z-index: 101;
+            border-radius: 8px;
+            padding: 8px 0;
+            border: 1px solid var(--light-gray);
+        }
+
+        .dropdown:hover .submenu {
+            display: block;
+        }
+
+        .submenu li {
+            margin: 0 !important;
+            padding: 0;
+            display: block;
+        }
+
+        .submenu li a {
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .submenu li a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+        }
+
+        .submenu li a::after {
+            display: none !important;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:not(:has(button))::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            transition: width 0.3s;
+        }
+
+        nav button {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--white);
+            padding: 12px 24px;
+            margin-left: 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            box-shadow: 0 4px 15px var(--shadow-light);
+        }
+
+        nav button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h3 {
+            font-size: 36px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h3:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Estilos específicos para a página de notícias */
+        .page-header {
+           background-color: white;
+            padding: 150px 0 80px;
+            color: var(--white);
+            text-align: center;
+            position: relative;
+        }
+
+       
+
+        .page-header .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .page-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        .news-filters {
+            background: linear-gradient(135deg, var(--light), var(--light-gray));
+            padding: 20px 0;
+            margin-bottom: 40px;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background-color: var(--white);
+            border: 2px solid var(--medium-gray);
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--white);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-light);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-box input {
+            padding: 10px 15px;
+            border: 2px solid var(--medium-gray);
+            border-radius: 25px;
+            font-size: 14px;
+            width: 250px;
+            background-color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 10px var(--shadow-light);
+        }
+
+        .search-box button {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--white);
+            border: none;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            margin-left: -38px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .search-box button:hover {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .news-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px var(--shadow-light);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px var(--shadow-medium);
+            border-top-color: var(--accent);
+        }
+
+        .news-img {
+            height: 200px;
+            background-color: var(--light-gray);
+            background-image: url('/api/placeholder/350/200');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-category {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--light), var(--light-gray));
+            color: var(--primary);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            border: 1px solid var(--medium-gray);
+        }
+
+        .news-title {
+            font-size: 20px;
+            color: var(--primary);
+            margin-bottom: 12px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .news-excerpt {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--light-gray);
+            padding-top: 15px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        .news-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            margin-right: 10px;
+        }
+
+        .news-date {
+            display: flex;
+            align-items: center;
+        }
+
+        .news-date i {
+            margin-right: 5px;
+            color: var(--accent);
+        }
+
+        .featured-news {
+            grid-column: span 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .featured-news .news-img {
+            height: 100%;
+        }
+
+        .featured-news .news-content {
+            padding: 35px;
+        }
+
+        .featured-news .news-title {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .featured-news .news-excerpt {
+            font-size: 16px;
+            margin-bottom: 30px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .page-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            margin: 0 5px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 2px solid var(--medium-gray);
+            color: var(--text-dark);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .page-link:hover,
+        .page-link.active {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--white);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px var(--shadow-light);
+        }
+
+        .page-link.dots {
+            border: none;
+            background-color: transparent;
+        }
+
+        .newsletter-banner {
+            background: linear-gradient(rgba(105, 86, 67, 0.9), rgba(74, 60, 46, 0.95)), url('/api/placeholder/1200/300') no-repeat center center/cover;
+            padding: 60px 0;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .newsletter-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary), var(--tertiary));
+            opacity: 0.85;
+            z-index: 1;
+        }
+
+        .newsletter-banner .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .newsletter-banner h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .newsletter-banner p {
+            font-size: 16px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px 0 0 25px;
+            font-size: 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .newsletter-form button {
+            padding: 0 25px;
+            border: none;
+            border-radius: 0 25px 25px 0;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+        }
+
+        footer {
+            background: linear-gradient(135deg, var(--dark), var(--tertiary));
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        footer p {
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px var(--shadow-light);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--shadow-medium);
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+        }
+
+        /* Responsividade */
+        @media (max-width: 1200px) {
+            .featured-news {
+                grid-column: span 1;
+                grid-template-columns: 1fr;
+            }
+
+            .featured-news .news-img {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .news-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .filter-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .filter-options {
+                overflow-x: auto;
+                padding-bottom: 10px;
+                width: 100%;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .search-box input {
+                width: 100%;
+            }
+
+            .page-header h2 {
+                font-size: 32px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .newsletter-form input {
+                border-radius: 25px;
+            }
+
+            .newsletter-form button {
+                border-radius: 25px;
+                padding: 15px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin-left: 10px;
+                margin-right: 10px;
+                margin-bottom: 10px;
+            }
+
+            nav button {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header style="background-color: #695643;">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../imagens/logo.png" alt="Barrueco Advogados Logo">
+
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html#inicio" class="menu-link">Início</a></li>
+                        <li><a href="../index.html#sobre" class="menu-link">Sobre</a></li>
+                        <li><a href="../index.html#areas" class="menu-link">Atuação</a></li>
+                        <li><a href="equipe.html" class="menu-link">Equipe</a></li>
+                        <li><a href="../index.html#testemunha" class="menu-link">Depoimentos</a></li>
+                        <li class="dropdown">
+                            <a href="paginas/noticias.html" class="menu-link active">Notícias</a>
+                        </li>
+                        <li><a href="../index.html#redes" class="menu-link">Redes</a></li>
+                        <li><a href="../index.html#contato" class="menu-link">Contato</a></li>
+                        <li><a href="https://portaldeservicos.pdpj.jus.br/consulta"><button id="btn-header">Acompanhe seu processo</button></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <h2 style="color: #695643;">Notícias Jurídicas</h2>
+            <p style="color: #695643;">Acompanhe as principais notícias do universo jurídico e mantenha-se informado sobre mudanças na legislação, jurisprudências e tendências do Direito.</p>
+        </div>
+    </section>
+
+    <section class="news-filters">
+        <div class="container">
+            <div class="filter-container">
+                <div class="filter-options">
+                    <button class="filter-btn active">Todos</button>
+                    <button class="filter-btn">Direito Civil</button>
+                    <button class="filter-btn">Direito Empresarial</button>
+                    <button class="filter-btn">Direito Trabalhista</button>
+                    <button class="filter-btn">Direito Tributário</button>
+                    <button class="filter-btn">Jurisprudência</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Buscar notícias...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="news-grid">
+                <article class="news-card featured-news">
+                    <div class="news-img"></div>
+                    <div class="news-content">
+                        <span class="news-category">Destaque</span>
+                        <h3 class="news-title">STF decide sobre constitucionalidade da tributação de lucros e dividendos</h3>
+                        <p class="news-excerpt">O Supremo Tribunal Federal decidiu hoje sobre a constitucionalidade da tributação de lucros e dividendos, tema que tem provocado intensos debates na comunidade jurídica e empresarial. Entenda as implicações para empresas e acionistas.</p>
+                        <a href="#" class="btn">Ler mais</a>
+                        <div class="news-meta">
+                            <div class="news-author">
+                                <div class="author-img"></div>
+                                <span>Por Dr. Carlos Barrueco</span>
+                            </div>
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>18 de maio de 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-img"></div>
+                    <div class="news-content">
+                        <span class="news-category">Direito Trabalhista</span>
+                        <h3 class="news-title">Novas regras para home office são aprovadas pelo Congresso</h3>
+                        <p class="news-excerpt">Congresso aprova novas regras para regulamentar o trabalho remoto, definindo direitos e deveres de empregadores e empregados nesta modalidade.</p>
+                        <div class="news-meta">
+                            <div class="news-author">
+                                <div class="author-img"></div>
+                                <span>Por Dra. Ana Ferreira</span>
+                            </div>
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>15 de maio de 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-img"></div>
+                    <div class="news-content">
+                        <span class="news-category">Direito Empresarial</span>
+                        <h3 class="news-title">Nova Lei de Falências simplifica processo de recuperação judicial</h3>
+                        <p class="news-excerpt">Alterações na Lei de Falências prometem desburocratizar e agilizar os processos de recuperação judicial para empresas em dificuldades financeiras.</p>
+                        <div class="news-meta">
+                            <div class="news-author">
+                                <div class="author-img"></div>
+                                <span>Por Dr. Roberto Mendes</span>
+                            </div>
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>10 de maio de 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-img"></div>
+                    <div class="news-content">
+                        <span class="news-category">Direito Tributário</span>
+                        <h3 class="news-title">Receita Federal atualiza regras de declaração para empresas do Simples Nacional</h3>
+                        <p class="news-excerpt">Novas diretrizes para declarações fiscais de empresas optantes pelo Simples Nacional entrarão em vigor a partir do próximo mês.</p>
+                        <div class="news-meta">
+                            <div class="news-author">
+                                <div class="author-img"></div>
+                                <span>Por Dra. Luciana Santos</span>
+                            </div>
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>5 de maio de 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-img"></div>
+                    <div class="news-content">
+                        <span class="news-category">Direito Civil</span>
+                        <h3 class="news-title">Novo entendimento do STJ sobre contratos de locação em tempos de crise</h3>
+                        <p class="news-excerpt">Superior Tribunal de Justiça firmou novo entendimento sobre revisão de contratos de locação em situações de crise econômica ou pandemia.</p>
+                        <div class="news-meta">
+                            <div class="news-author">
+                                <div class="author-img"></div>
+                                <span>Por Dr. Marcos Oliveira</span>
+                            </div>
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>3 de maio de 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="news-card">
+                    <div class="news-img"></div>
+                    <div class="news-content">
+                        <span class="news-category">Jurisprudência</span>
+                        <h3 class="news-title">Decisão histórica do STF altera interpretação sobre prescrição em casos de dano ambiental</h3>
+                        <p class="news-excerpt">Supremo Tribunal Federal estabelece novo marco para contagem de prazos prescricionais em ações de reparação por danos ambientais.</p>
+                        <div class="news-meta">
+                            <div class="news-author">
+                                <div class="author-img"></div>
+                                <span>Por Dr. Felipe Costa</span>
+                            </div>
+                            <div class="news-date">
+                                <i class="far fa-calendar-alt"></i>
+                                <span>29 de abril de 2025</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="page-link active">1</a>
+                <a href="#" class="page-link">2</a>
+                <a href="#" class="page-link">3</a>
+                <span class="page-link dots">...</span>
+                <a href="#" class="page-link">8</a>
+                <a href="#" class="page-link"><i class="fas fa-angle-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-banner">
+        <div class="container">
+            <h3>Mantenha-se Informado</h3>
+            <p>Receba nossas notícias, artigos e atualizações sobre mudanças na legislação diretamente em seu e-mail.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Seu melhor e-mail" required>
+                <button type="submit">Inscrever-se</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="../index.html">Início</a>
+                <a href="../index.html#sobre">Sobre</a>
+                <a href="../index.html#areas">Áreas</a>
+                <a href="equipe.html">Equipe</a>
+                <a href="../index.html#contato">Contato</a>
+            </div>
+            <p>&copy; 2025 Barrueco Advogados - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para filtros
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove a classe 'active' de todos os botões
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Adiciona a classe 'active' ao botão clicado
+                this.classList.add('active');
+                
+                // Aqui entraria a lógica de filtragem (em uma implementação real)
+                // Por exemplo, mostrando apenas notícias da categoria selecionada
+            });
+        });
+
+        // Script para scrolling suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

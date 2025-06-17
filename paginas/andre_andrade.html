@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../imagens/favicon.ico" type="image/x-icon">
+    <title>Nossa Equipe | Barrueco Advogados</title>
+    <style>
+        :root {
+            --primary: #0e3b5e;
+            --secondary: rgb(215, 78, 78);
+            --light: #f5f5f5;
+            --dark: #333;
+            --white: #fff;
+            --gray: #e6e6e6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            color: var(--dark);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--white);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 60px;
+        }
+
+        .logo h1 {
+            margin-left: 10px;
+            font-size: 24px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .menu-link {
+            color: var(--dark);
+            text-decoration: none;
+            position: relative;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .menu-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .menu-link:hover::after,
+        .menu-link.active::after {
+            width: 100%;
+        }
+
+        .menu-link:hover {
+            color: var(--primary);
+        }
+
+        .menu-link.active {
+            color: #003366;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:not(:has(button))::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        nav button {
+            background-color: var(--secondary);
+            color: var(--white);
+            padding: 10px 20px;
+            margin-left: 60px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+        nav button:hover {
+            transform: translateY(-10%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .page-header {
+            padding: 120px 0 60px;
+            background: linear-gradient(rgba(14, 59, 94, 0.1), rgba(14, 59, 94, 0.1));
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 48px;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            color: var(--dark);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .team-section {
+            padding: 80px 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            border: 5px solid var(--light);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .team-member:hover .member-img {
+            transform: scale(1.05);
+            border-color: var(--secondary);
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .team-member h3 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .team-member .position {
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .member-bio {
+            color: var(--dark);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .member-details {
+            background-color: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .member-details h4 {
+            color: var(--primary);
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .member-details ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .member-details li {
+            color: var(--dark);
+            font-size: 14px;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .member-details li::before {
+            content: '▸';
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-icons a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .leadership-section {
+            background-color: var(--light);
+            padding: 80px 0;
+        }
+
+        .leadership-card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .leadership-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+        }
+
+        .leadership-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .leadership-content h3 {
+            color: var(--primary);
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .leadership-content .position {
+            color: var(--secondary);
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .leadership-content p {
+            color: var(--dark);
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: rgb(215, 78, 78);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--secondary);
+            transform: translateX(-5px);
+        }
+
+        .back-link i {
+            margin-right: 10px;
+        }
+
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            margin: 0 15px;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 36px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .leadership-card {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 30px;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 15px;
+            }
+
+            nav button {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../imagens/logo.png" alt="Barrueco Advogados Logo">
+                    <h1></h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html" class="menu-link">Início</a></li>
+                        <li><a href="../index.html#sobre" class="menu-link">Sobre</a></li>
+                        <li><a href="../index.html#areas" class="menu-link">Atuação</a></li>
+                        <li><a href="equipe.html" class="menu-link active">Equipe</a></li>
+                        <li><a href="../index.html#testemunha" class="menu-link">Depoimentos</a></li>
+                        <li><a href="../index.html#redes" class="menu-link">Redes</a></li>
+                        <li><a href="../index.html#contato" class="menu-link">Contato</a></li>
+                        <li><a href="https://portaldeservicos.pdpj.jus.br/consulta"><button id="btn-header">Acompanhe
+                                    seu processo</button></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="page-header">
+        <div class="container">
+            <a href="../index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Voltar ao início
+            </a>
+            <h1>Nossa Equipe</h1>
+            <p>Conheça os profissionais especializados que formam o time do escritório Barrueco Advogados. Uma equipe
+                comprometida com a excelência jurídica e o sucesso dos nossos clientes.</p>
+        </div>
+    </section>
+
+    <section class="leadership-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Advogados</h2>
+            </div>
+            <div class="leadership-card">
+                <div class="leadership-image"
+                    style="background-size: cover; background-image: url(../imagens/ft-advogados/adv_2.png); background-position: center top;">
+
+                </div>
+                <div class="leadership-content">
+
+                    <h3>Dr. André Andrade</h3>
+                    <p class="position">Especialista em Direito Civil</p>
+                    <p>Dr. André Andrade: Advogado Consultor, especialista em Direito Civil, com Mestrado em Direito
+                        Civil pela Pontifícia Universidade Católica de São Paulo (PUC-SP) e graduação pela Universidade
+                        de São Paulo (USP). Fundador do escritório Andrade Advocacia Civil, com sede em São Paulo, desde
+                        2008. Atuou como advogado associado em escritórios de destaque, como TozziniFreire Advogados e
+                        Lobo de Rizzo, com foco em responsabilidade civil, contratos e direito das sucessões.
+
+                        É membro efetivo do Instituto Brasileiro de Direito Civil – IBDCivil, tendo participado da
+                        comissão de revisão do Código Civil sob coordenação do Prof. Dr. Gustavo Tepedino. Foi consultor
+                        jurídico em projetos legislativos sobre direitos da personalidade e responsabilidade objetiva no
+                        âmbito da Câmara dos Deputados. Desde 2016, atua também como mediador certificado pelo CNJ, com
+                        ênfase em conflitos sucessórios e de família.
+
+                        Professor convidado nos cursos de pós-graduação da Escola Paulista da Magistratura (EPM) e da
+                        Faculdade de Direito de São Bernardo do Campo, lecionando disciplinas como Responsabilidade
+                        Civil, Direito das Obrigações e Direito Contratual. Ministra cursos e palestras em instituições
+                        como a OAB/SP, Escola Superior da Advocacia (ESA), Fundação Armando Alvares Penteado (FAAP) e
+                        Universidade Presbiteriana Mackenzie.
+
+                        Tem atuação destacada na assessoria jurídica de empresas e famílias em litígios cíveis
+                        complexos, além de prestar consultoria na elaboração de contratos empresariais, acordos de
+                        convivência e planejamento sucessório. Coordenou diversas arbitragens na Câmara de Arbitragem
+                        Empresarial – Brasil (CAMARB) e no Centro de Arbitragem e Mediação da Câmara de Comércio
+                        Brasil-Canadá (CAM-CCBC).
+
+                        É autor da obra Responsabilidade Civil e Novas Tecnologias – Limites e Desafios Jurídicos na Era
+                        Digital, publicada pela Editora Almedina em 2021, e coautor do livro Manual Prático de Direito
+                        das Sucessões, Editora Revista dos Tribunais, 2023. Publica regularmente artigos em revistas
+                        especializadas e participa como debatedor em congressos nacionais de Direito Civil.
+
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="E-mail"><i class="fas fa-envelope"></i></a>
+                        <a href="#" title="Lattes"><i class="fas fa-graduation-cap"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Advogados Especialistas</h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-member">
+
+
+
+                     <a href="equipe.html" style="text-decoration: none;" >
+                        <div class="member-img"
+                            style="background-size: cover; background-image: url(../imagens/ft-advogados/adv_1.png); background-position: center top;">
+                        </div>
+                        <h3>Dr. Fernando Barrueco</h3>
+                        <p class="position">Socio Fundador</p>
+                        <div class="member-bio">
+                            <p>Advogado especialista em Direito Tributario com ampla experiência em contratos,
+                                responsabilidade
+                            </p>
+                        </div>
+                        <div class="member-details">
+                            <h4>Áreas de Especialização:</h4>
+                            <ul>
+                                <li>Contratos Civis e Comerciais</li>
+                                <li>Responsabilidade Civil</li>
+                                <li>Direito de Família</li>
+                                <li>Sucessões e Inventários</li>
+                                <li>Direito do Consumidor</li>
+                            </ul>
+                        </div>
+                    </a>
+                     <div class="social-icons">
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" title="E-mail"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/200/200" alt="Dr. Rafael Oliveira">
+                </div>
+                <h3>Dr. Rafael Oliveira</h3>
+                <p class="position">Especialista em Direito Tributário</p>
+                <div class="member-bio">
+                    <p>Advogado tributarista com sólida formação acadêmica e prática em planejamento tributário,
+                        consultoria fiscal e defesa em processos administrativos e judiciais. Mestre em Direito
+                        Tributário pela USP.</p>
+                </div>
+                <div class="member-details">
+                    <h4>Áreas de Especialização:</h4>
+                    <ul>
+                        <li>Planejamento Tributário</li>
+                        <li>Processos Administrativos Fiscais</li>
+                        <li>Recuperação de Créditos Tributários</li>
+                        <li>Consultoria em Tributos Federais</li>
+                        <li>Compliance Tributário</li>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="E-mail"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/200/200" alt="Dra. Camila Mendes">
+                </div>
+                <h3>Dra. Camila Mendes</h3>
+                <p class="position">Especialista em Direito Trabalhista</p>
+                <div class="member-bio">
+                    <p>Advogada especialista em Direito do Trabalho com experiência tanto na advocacia preventiva
+                        quanto contenciosa. Pós-graduada em Direito e Processo do Trabalho pela Universidade
+                        Mackenzie.</p>
+                </div>
+                <div class="member-details">
+                    <h4>Áreas de Especialização:</h4>
+                    <ul>
+                        <li>Consultoria Trabalhista Preventiva</li>
+                        <li>Processos Trabalhistas</li>
+                        <li>Compliance Trabalhista</li>
+                        <li>Negociações Coletivas</li>
+                        <li>Terceirização e Outsourcing</li>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="E-mail"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/200/200" alt="Dr. Lucas Ferreira">
+                </div>
+                <h3>Dr. Lucas Ferreira</h3>
+                <p class="position">Especialista em Direito Empresarial</p>
+                <div class="member-bio">
+                    <p>Advogado com vasta experiência em Direito Empresarial, societário e contratos comerciais.
+                        Especialista em fusões e aquisições, reestruturações societárias e governança corporativa.
+                    </p>
+                </div>
+                <div class="member-details">
+                    <h4>Áreas de Especialização:</h4>
+                    <ul>
+                        <li>Direito Societário</li>
+                        <li>Fusões e Aquisições (M&A)</li>
+                        <li>Contratos Empresariais</li>
+                        <li>Governança Corporativa</li>
+                        <li>Recuperação Judicial</li>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="E-mail"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/200/200" alt="Dra. Patricia Costa">
+                </div>
+                <h3>Dra. Patricia Costa</h3>
+                <p class="position">Especialista em Direito Imobiliário</p>
+                <div class="member-bio">
+                    <p>Advogada especializada em Direito Imobiliário e Urbanístico com ampla experiência em
+                        transações imobiliárias, regularização fundiária e desenvolvimento de projetos urbanos.</p>
+                </div>
+                <div class="member-details">
+                    <h4>Áreas de Especialização:</h4>
+                    <ul>
+                        <li>Transações Imobiliárias</li>
+                        <li>Direito de Construção</li>
+                        <li>Regularização Fundiária</li>
+                        <li>Incorporações Imobiliárias</li>
+                        <li>Contratos de Locação</li>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="E-mail"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="team-member">
+                <div class="member-img">
+                    <img src="/api/placeholder/200/200" alt="Dr. Marcos Silva">
+                </div>
+                <h3>Dr. Marcos Silva</h3>
+                <p class="position">Especialista em Direito Digital</p>
+                <div class="member-bio">
+                    <p>Advogado especializado em Direito Digital e Proteção de Dados, com experiência em compliance
+                        digital, LGPD e direito da tecnologia. Certificado em Data Protection Officer (DPO).</p>
+                </div>
+                <div class="member-details">
+                    <h4>Áreas de Especialização:</h4>
+                    <ul>
+                        <li>Lei Geral de Proteção de Dados (LGPD)</li>
+                        <li>Direito da Tecnologia</li>
+                        <li>Compliance Digital</li>
+                        <li>Contratos de Software</li>
+                        <li>Propriedade Intelectual Digital</li>
+                    </ul>
+                </div>
+                <div class="social-icons">
+                    <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" title="E-mail"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="../index.html">Início</a>
+                <a href="../index.html#sobre">Sobre</a>
+                <a href="../index.html#areas">Áreas</a>
+                <a href="equipe.html">Equipe</a>
+                <a href="../index.html#contato">Contato</a>
+            </div>
+            <p>&copy; 2025 Barrueco Advogados - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para scroll suave e menu ativo
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Animação de entrada dos cards da equipe
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Aplicar animação aos elementos da equipe
+        document.querySelectorAll('.team-member, .leadership-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(50px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
