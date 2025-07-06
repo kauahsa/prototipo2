@@ -8,158 +8,7 @@
     <link rel="stylesheet" href="../styles.css">
     <title>Nossa Equipe | Barrueco Advogados</title>
     <style>
-        /* Paleta de cores reformulada baseada em #695643 */
-        /* Paleta de cores reformulada baseada em #695643 */
-        :root {
-            --primary: #695643;
-            /* Cor base fornecida */
-            --primary-dark: #4a3c2e;
-            /* Tom mais escuro */
-            --primary-light: #857865;
-            /* Tom mais claro */
-            --secondary: #8b7355;
-            /* Complementar quente */
-            --accent: #a68b5b;
-            /* Dourado suave */
-            --tertiary: #5d4e3a;
-            /* Tom intermediário */
-            --light: #faf9f7;
-            /* Bege muito claro */
-            --light-gray: #f2f0ec;
-            /* Cinza bege */
-            --medium-gray: #d4d0c8;
-            /* Cinza médio */
-            --dark: #2d251a;
-            /* Marrom escuro */
-            --white: #ffffff;
-            /* Branco puro */
-            --text-light: #6b635a;
-            /* Texto claro */
-            --text-dark: #3d3529;
-            /* Texto escuro */
-            --shadow-light: rgba(105, 86, 67, 0.1);
-            --shadow-medium: rgba(105, 86, 67, 0.2);
-            --shadow-dark: rgba(105, 86, 67, 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        body {
-            color: var(--text-dark);
-            background-color: var(--white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-
-
-        /* Header */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background-color: var(--white);
-            position: fixed;
-            height: 100px;
-            width: 100%;
-            z-index: 100;
-            box-shadow: 0 2px 20px var(--shadow-light);
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            padding: 15px 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo img {
-            height: 55px;
-        }
-
-        .logo h1 {
-            margin-left: 10px;
-            font-size: 24px;
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        /* Navegação */
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        .menu-link {
-            color: white;
-            text-decoration: none;
-            position: relative;
-            font-weight: 500;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .menu-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            transition: width 0.3s ease;
-        }
-
-        .menu-link:hover::after,
-        .menu-link.active::after {
-            width: 100%;
-        }
-
-        .menu-link:hover,
-        .menu-link.active {
-            color: #f4f4f4;
-        }
-
-        #btn-header {
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            color: var(--white);
-            padding: 12px 24px;
-            border: none;
-            border-radius: 25px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px var(--shadow-light);
-        }
-
-        #btn-header:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--shadow-medium);
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
-        }
-
-        /* Dropdown */
+        
         .dropdown {
             position: relative;
         }
@@ -1673,7 +1522,7 @@
 </head>
 
 <body>
-    <header style="background-color: #695643;">
+     <header style="background-color: #695643;">
         <div class="container">
             <div class="nav-container">
                 <div class="logo">
@@ -1686,22 +1535,17 @@
                         <li><a href="sobre.html" class="menu-link">Sobre</a></li>
                         <li><a href="atuacao.html" class="menu-link">Atuação</a></li>
                         <li><a href="equipe.html" class="menu-link active">Equipe</a></li>
-                        <li><a href="../index.html#testemunha" class="menu-link">Depoimentos</a></li>
-                        <li class="dropdown">
-                            <a href="noticias.html" class="menu-link">Notícias</a>
-                        </li>
-                        <li><a href="../index.html#redes" class="menu-link">Redes</a></li>
-                        <li><a href="../index.html#contato" class="menu-link">Contato</a></li>
-                        <li><a href="https://portaldeservicos.pdpj.jus.br/consulta"><button style="margin-left: 30px;"
-                                    id="btn-header">Acompanhe seu processo</button></a></li>
+                        <li><a href="noticias.html" class="menu-link">Notícias</a></li>
+                        <li><a href="contato.html" class="menu-link">Contato</a></li>
+                        <li><a href="https://portaldeservicos.pdpj.jus.br/consulta"><button style="margin-left: 90px;" id="btn-header">Acompanhe seu processo</button></a></li>
                     </ul>
                 </nav>
             </div>
         </div>
-
         <div class="mobile-menu">
             <div class="mobile-logo">
-                <img style="padding-left: 20px; margin-top: 12px; width: 280px;"src="../imagens/logo.png" alt="Barrueco Advogados Logo">
+                <img style="padding-left: 20px; margin-top: 12px; width: 280px;" src="../imagens/logo.png"
+                    alt="Barrueco Advogados Logo">
             </div>
             <div class="mobile-menu-icon" id="menu-toggle">
 
@@ -1750,26 +1594,16 @@
                             <span>Equipe</span>
                         </a>
                     </li>
-                    <li class="mobile-menu-item">
-                        <a href="../index.html#testemunha" class="mobile-menu-link">
-                            <i class="fas fa-star"></i>
-                            <span>Depoimentos</span>
-                        </a>
-                    </li>
+            
                     <li class="mobile-menu-item">
                         <a href="noticias.html" class="mobile-menu-link">
                             <i class="fas fa-newspaper"></i>
                             <span>Notícias</span>
                         </a>
                     </li>
+                    
                     <li class="mobile-menu-item">
-                        <a href="../index.html#redes" class="mobile-menu-link">
-                            <i class="fas fa-share-alt"></i>
-                            <span>Redes</span>
-                        </a>
-                    </li>
-                    <li class="mobile-menu-item">
-                        <a href="../index.html#contato" class="mobile-menu-link">
+                        <a href="contato.html" class="mobile-menu-link">
                             <i class="fas fa-phone"></i>
                             <span>Contato</span>
                         </a>
@@ -1792,9 +1626,7 @@
                 </div>
             </div>
         </div>
-
     </header>
-
     <section class="page-header">
         <div class="container">
             <a href="../index.html" class="back-link">
@@ -1997,6 +1829,7 @@
             </div>
         </div>
     </section>
+    
     
 
      <footer>

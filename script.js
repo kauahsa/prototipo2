@@ -15,7 +15,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         navLinks.forEach(link => {
-                            link.classList.remove("active");
+                            
                             if (link.getAttribute("href").substring(1) === entry.target.id) {
                                 link.classList.add("active");
                             }
@@ -225,3 +225,187 @@ styleSheet.textContent = additionalStyles;
 document.head.appendChild(styleSheet);
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+        // Configurações básicas
+        slidesPerView: 1,
+        spaceBetween: 30,
+        centeredSlides: true,
+        loop: true,
+        
+        // Autoplay
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        
+        // Efeitos de transição
+        effect: 'slide',
+        speed: 800,
+        
+        // Navegação
+        navigation: {
+            nextEl: '.testimonials-next',
+            prevEl: '.testimonials-prev',
+        },
+        
+        // Paginação
+        pagination: {
+            el: '.testimonials-pagination',
+            clickable: true,
+            dynamicBullets: true,
+        },
+        
+        // Responsividade
+        breakpoints: {
+            // Mobile
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                centeredSlides: true,
+            },
+            // Tablet
+            768: {
+                slidesPerView: 1.2,
+                spaceBetween: 30,
+                centeredSlides: true,
+            },
+            // Desktop pequeno
+            1024: {
+                slidesPerView: 1.5,
+                spaceBetween: 40,
+                centeredSlides: true,
+            },
+            // Desktop grande
+            1200: {
+                slidesPerView: 2,
+                spaceBetween: 50,
+                centeredSlides: false,
+            },
+        },
+        
+        // Eventos
+        on: {
+            init: function() {
+                // Adiciona animação de fade-in ao inicializar
+                const slides = document.querySelectorAll('.testimonials-swiper .swiper-slide');
+                slides.forEach((slide, index) => {
+                    slide.style.opacity = '0';
+                    slide.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        slide.style.transition = 'all 0.6s ease';
+                        slide.style.opacity = '1';
+                        slide.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            },
+            
+            slideChange: function() {
+                // Adiciona efeito de pulsação nos bullets ativos
+                const activeBullet = document.querySelector('.testimonials-pagination .swiper-pagination-bullet-active');
+                if (activeBullet) {
+                    activeBullet.style.animation = 'pulse 0.6s ease';
+                    setTimeout(() => {
+                        activeBullet.style.animation = '';
+                    }, 600);
+                }
+            }
+        }
+    });
+    
+    // Pausa o autoplay quando o mouse entra na área dos depoimentos
+    const testimonialsSection = document.querySelector('.testimonials-swiper');
+    if (testimonialsSection) {
+        testimonialsSection.addEventListener('mouseenter', () => {
+            testimonialsSwiper.autoplay.stop();
+        });
+        
+        testimonialsSection.addEventListener('mouseleave', () => {
+            testimonialsSwiper.autoplay.start();
+        });
+    }
+    
+    // Adiciona animação de hover nos cartões
+    const testimonialCards = document.querySelectorAll('.testimonial');
+    testimonialCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+});
+
+// Animação de pulsação para os bullets
+const pulseAnimation = `
+    @keyframes pulse {
+        0% { transform: scale(1.2); }
+        50% { transform: scale(1.4); }
+        100% { transform: scale(1.2); }
+    }
+`;
+
+// Adiciona a animação ao CSS
+const style = document.createElement('style');
+style.textContent = pulseAnimation;
+document.head.appendChild(style);
+
+// Função para reinicializar o swiper se necessário
+function reinitializeTestimonialsSwiper() {
+    const existingSwiper = document.querySelector('.testimonials-swiper');
+    if (existingSwiper && existingSwiper.swiper) {
+        existingSwiper.swiper.destroy();
+    }
+    
+    // Reinicializa após um pequeno delay
+    setTimeout(() => {
+        const testimonialsSwiper = new Swiper('.testimonials-swiper', {
+            // Mesmas configurações do swiper acima
+            slidesPerView: 1,
+            spaceBetween: 30,
+            centeredSlides: true,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+            },
+            effect: 'slide',
+            speed: 800,
+            navigation: {
+                nextEl: '.testimonials-next',
+                prevEl: '.testimonials-prev',
+            },
+            pagination: {
+                el: '.testimonials-pagination',
+                clickable: true,
+                dynamicBullets: true,
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    centeredSlides: true,
+                },
+                768: {
+                    slidesPerView: 1.2,
+                    spaceBetween: 30,
+                    centeredSlides: true,
+                },
+                1024: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 40,
+                    centeredSlides: true,
+                },
+                1200: {
+                    slidesPerView: 2,
+                    spaceBetween: 50,
+                    centeredSlides: false,
+                },
+            },
+        });
+    }, 100);
+}

@@ -8,8 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <title>Barrueco Advogados | Escritório de Advocacia</title>
     <link rel="stylesheet" href="styles.css">
+    
 </head>
 
 <body>
@@ -26,13 +28,11 @@
                         <li><a href="paginas/sobre.html" class="menu-link">Sobre</a></li>
                         <li><a href="paginas/atuacao.html" class="menu-link">Atuação</a></li>
                         <li><a href="paginas/equipe.html" class="menu-link">Equipe</a></li>
-                        <li><a href="#testemunha" class="menu-link">Depoimentos</a></li>
                         <li class="dropdown">
                             <a href="paginas/noticias.html" class="menu-link">Notícias</a>
                         </li>
-                        <li><a href="#redes" class="menu-link">Redes</a></li>
-                        <li><a href="#contato" class="menu-link">Contato</a></li>
-                        <li><a href="https://portaldeservicos.pdpj.jus.br/consulta"><button style="margin-left: 30px;"
+                        <li><a href="paginas/contato.html" class="menu-link">Contato</a></li>
+                        <li><a href="https://portaldeservicos.pdpj.jus.br/consulta"><button style="margin-left: 90px;"
                                     id="btn-header">Acompanhe seu processo</button></a></li>
                     </ul>
                 </nav>
@@ -91,26 +91,16 @@
                             <span>Equipe</span>
                         </a>
                     </li>
-                    <li class="mobile-menu-item">
-                        <a href="#testemunha" class="mobile-menu-link">
-                            <i class="fas fa-star"></i>
-                            <span>Depoimentos</span>
-                        </a>
-                    </li>
+            
                     <li class="mobile-menu-item">
                         <a href="paginas/noticias.html" class="mobile-menu-link">
                             <i class="fas fa-newspaper"></i>
                             <span>Notícias</span>
                         </a>
                     </li>
+                    
                     <li class="mobile-menu-item">
-                        <a href="#redes" class="mobile-menu-link">
-                            <i class="fas fa-share-alt"></i>
-                            <span>Redes</span>
-                        </a>
-                    </li>
-                    <li class="mobile-menu-item">
-                        <a href="#contato" class="mobile-menu-link">
+                        <a href="paginas/contato.html" class="mobile-menu-link">
                             <i class="fas fa-phone"></i>
                             <span>Contato</span>
                         </a>
@@ -149,7 +139,7 @@
                     sempre pautados na ética profissional, rigor técnico e compromisso com os resultados de
                     nossos clientes.</p>
                 <div class="cta">
-                    <a href="#contato" class="btn">Agende uma Reunião</a>
+                    <a href="paginas/contato.html" class="btn">Agende uma Reunião</a>
                     <a style="color: #695643;" href="#areas" class=" btn-outline btn">Nossas Áreas</a>
                 </div>
             </div>
@@ -159,178 +149,116 @@
 
 
     <section id="testemunha" class="testimonials section">
-        <div class="container">
-            <div class="section-title">
-                <h3>Depoimentos</h3>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial">
-                    <p>"
-                        "A SML Brasil é uma das mais importantes
-                        empresas brasileiras de
-                        soluções de gestão de
-                        processos, documentos e
-                        câmbio. Estamos com o
-                        escritório há 10 anos,
-                        atuando em questões
-                        tributárias, jurídicas e
-                        projetos de M&A. A
-                        assertividade de seus
-                        trabalhos, sempre
-                        objetivos e direto ao ponto,
-                        é fundamental para a SML
-                        Brasil."</p>
-                    <div class="client">
-
-                        <div class="client-info">
-                            <h5>José Roberto de Lazari</h5>
-                            <p>Presidente da SML Brasil</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial">
-                    <p>"
-                        "Nossa empresa está em total tranquilidade jurídica,
-                        o escritório tem uma visão
-                        que previne de forma efetiva qualquer problema que poderia impactar
-                        nossa empresa e nosso
-                        desenvolvimento.
-                        Trabalham em altíssimo
-                        nível e discutem possíveis
-                        problemas antes de se
-                        tornarem reais e
-                        complexos."</p>
-                    <div class="client">
-                        <div class="client-info">
-                            <h5>Renato Intakli</h5>
-                            <p> CEO - PARALLAXIS ECONOMICS & DATA SCIENCE</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial">
-                    <p>"
-                        "Temos o escritório como
-                        braço jurídico da KIMAN
-                        SOLUTIONS há 9 anos. É
-                        um dos nossos principais
-                        PARCEIROS, que se
-                        destaca pela agilidade e pelo elevado nivel de
-                        qualidade nos serviços
-                        prestados. Teve papel fundamental na estruturação dos contratos
-                        de venda de
-                        Licenciamento,
-                        Manutenção e
-                        Implantação do nosso ERP KIPREV, que opera há mais de 9 anos sem nenhum
-                        problema."</p>
-                    <div class="client">
-                        <div class="client-info">
-                            <h5>MARCOS EDUARDO BANDEIRA MAIA</h5>
-                            <p>Presidente KIMAN SOLUTIONS LTDA.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <p>
-
-                        "A #Startups foi essencial
-                        para a 1PIC desde o primeiro dia de concepção de nossa empresa. Esteve
-                        ao nosso lado em todos os momentos que
-                        precisamos e nos orientou a tomar as melhores
-                        decisões, nos deixando
-                        seguros."
-                    </p>
-                    <div class="client">
-                        <div class="client-info">
-                            <h5>Carlos F. Boscoe Alexander Anderson</h5>
-                            <p>Cliente da #Startups 1PIC"</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <p>
-
-                        "Estamos com o escritório
-                        desde o final de 2013.
-                        Temos confiança neles,
-                        coisa que nunca tive em
-                        outros escritórios. A
-                        segurança que o Dr.
-                        Fernando passa e a
-                        certeza de que tudo vai dar certo é o ponto forte da nossa parceria!"
-                        
-                       </p>
-                    <div class="client">
-                        <div class="client-info">
-                            <h5>Wellington Paschoal</h5>
-                            <p>Cliente da #B Everlast Energy Drink.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container">
+        <div class="section-title">
+            <h3>Depoimentos</h3>
         </div>
-    </section>
+        
+        <div class="swiper testimonials-swiper">
+            <div class="swiper-wrapper">
+                <!-- Depoimento 1 -->
+                <div class="swiper-slide">
+                    <div class="testimonial">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"A SML Brasil é uma das mais importantes empresas brasileiras de soluções de gestão de processos, documentos e câmbio. Estamos com o escritório há 10 anos, atuando em questões tributárias, jurídicas e projetos de M&A. A assertividade de seus trabalhos, sempre objetivos e direto ao ponto, é fundamental para a SML Brasil."</p>
+                        <div class="client">
+                            <div class="client-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="client-info">
+                                <h5>José Roberto de Lazari</h5>
+                                <p>Presidente da SML Brasil</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <section id="redes" class="social-media">
-        <div class="container">
-            <div class="section-title">
-                <h3>Siga-nos nas Redes Sociais</h3>
+                <!-- Depoimento 2 -->
+                <div class="swiper-slide">
+                    <div class="testimonial">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Nossa empresa está em total tranquilidade jurídica, o escritório tem uma visão que previne de forma efetiva qualquer problema que poderia impactar nossa empresa e nosso desenvolvimento. Trabalham em altíssimo nível e discutem possíveis problemas antes de se tornarem reais e complexos."</p>
+                        <div class="client">
+                            <div class="client-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="client-info">
+                                <h5>Renato Intakli</h5>
+                                <p>CEO - PARALLAXIS ECONOMICS & DATA SCIENCE</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 3 -->
+                <div class="swiper-slide">
+                    <div class="testimonial">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Temos o escritório como braço jurídico da KIMAN SOLUTIONS há 9 anos. É um dos nossos principais PARCEIROS, que se destaca pela agilidade e pelo elevado nível de qualidade nos serviços prestados. Teve papel fundamental na estruturação dos contratos de venda de Licenciamento, Manutenção e Implantação do nosso ERP KIPREV, que opera há mais de 9 anos sem nenhum problema."</p>
+                        <div class="client">
+                            <div class="client-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="client-info">
+                                <h5>Marcos Eduardo Bandeira Maia</h5>
+                                <p>Presidente KIMAN SOLUTIONS LTDA.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 4 -->
+                <div class="swiper-slide">
+                    <div class="testimonial">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"A #Startups foi essencial para a 1PIC desde o primeiro dia de concepção de nossa empresa. Esteve ao nosso lado em todos os momentos que precisamos e nos orientou a tomar as melhores decisões, nos deixando seguros."</p>
+                        <div class="client">
+                            <div class="client-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="client-info">
+                                <h5>Carlos F. Boscoe Alexander Anderson</h5>
+                                <p>Cliente da #Startups 1PIC</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Depoimento 5 -->
+                <div class="swiper-slide">
+                    <div class="testimonial">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Estamos com o escritório desde o final de 2013. Temos confiança neles, coisa que nunca tive em outros escritórios. A segurança que o Dr. Fernando passa e a certeza de que tudo vai dar certo é o ponto forte da nossa parceria!"</p>
+                        <div class="client">
+                            <div class="client-avatar">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div class="client-info">
+                                <h5>Wellington Paschoal</h5>
+                                <p>Cliente da #B Everlast Energy Drink</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="social-intro">
-                <p>Mantenha-se atualizado com as últimas novidades do mundo jurídico e acompanhe nosso trabalho através
-                    de nossas redes sociais.</p>
-            </div>
-
-            <div class="social-platforms">
-                <a href="#" class="social-platform">
-                    <div class="platform-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <div class="platform-info">
-                        <h4>Instagram</h4>
-                        <p>Dicas jurídicas e bastidores do escritório</p>
-                        <span class="follow-btn">Seguir</span>
-                    </div>
-                </a>
-
-                <a href="#" class="social-platform">
-                    <div class="platform-icon">
-                        <i class="fab fa-linkedin"></i>
-                    </div>
-                    <div class="platform-info">
-                        <h4>LinkedIn</h4>
-                        <p>Artigos e atualizações profissionais</p>
-                        <span class="follow-btn">Conectar</span>
-                    </div>
-                </a>
-
-                <a href="#" class="social-platform">
-                    <div class="platform-icon">
-                        <i class="fab fa-facebook"></i>
-                    </div>
-                    <div class="platform-info">
-                        <h4>Facebook</h4>
-                        <p>Notícias e interação com a comunidade</p>
-                        <span class="follow-btn">Curtir</span>
-                    </div>
-                </a>
-
-                <a href="#" class="social-platform">
-                    <div class="platform-icon">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <div class="platform-info">
-                        <h4>YouTube</h4>
-                        <p>Vídeos educativos sobre direito</p>
-                        <span class="follow-btn">Inscrever</span>
-                    </div>
-                </a>
-            </div>
+            
+            <!-- Navegação -->
+            <div class="swiper-button-next testimonials-next"></div>
+            <div class="swiper-button-prev testimonials-prev"></div>
+            <div class="swiper-pagination testimonials-pagination"></div>
         </div>
-    </section>
-
-
+    </div>
+</section>
 
     <section id="contato" class="contact section">
         <div class="container">
@@ -388,14 +316,16 @@
             </div>
         </div>
     </section>
-    
+     <a href="https://wa.me/5514981111872" id="zap" style="text-decoration: none;" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
 
     <footer>
         <div class="container">
             <div class="footer-links">
                 <a href="#inicio">Início</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#areas">Atuação</a>
+                <a href="paginas/sobre.html">Sobre</a>
+                <a href="paginas/atuacao.html">Atuação</a>
                 <a href="paginas/equipe.html">Equipe</a>
                 <a href="#contato">Contato</a>
             </div>
@@ -404,6 +334,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </body>
 
 </html>
