@@ -2047,7 +2047,7 @@ footer p {
     .mobile-menu-content::-webkit-scrollbar-thumb:hover {
         background: var(--secondary);
     }
-
+}
 /* Para telas muito pequenas */
 @media (max-width: 780px) {
     .mobile-menu-content {
@@ -2376,5 +2376,4 @@ footer p {
     }
     
 
-}
 }
