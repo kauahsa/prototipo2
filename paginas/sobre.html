@@ -481,9 +481,9 @@
                 <nav>
                     <ul>
                         <li><a href="../index.html#inicio" class="menu-link">Início</a></li>
-                        <li><a href="sobre.html" class="menu-link active">Sobre</a></li>
+                        <li><a href="sobre.html" class="menu-link">Sobre</a></li>
                         <li><a href="atuacao.html" class="menu-link">Atuação</a></li>
-                        <li><a href="equipe.html" class="menu-link">Equipe</a></li>
+                        <li><a href="equipe.html" class="menu-link active">Equipe</a></li>
                         <li><a href="noticias.html" class="menu-link">Notícias</a></li>
                         <li><a href="contato.html" class="menu-link">Contato</a></li>
                         <li><a href="https://portaldeservicos.pdpj.jus.br/consulta"><button style="margin-left: 90px;"
@@ -492,8 +492,92 @@
                 </nav>
             </div>
         </div>
-    </header>
+        <div class="mobile-menu">
+            <div class="mobile-logo">
+                <img style="padding-left: 20px; margin-top: 12px; width: 280px;" src="../imagens/logo.png"
+                    alt="Barrueco Advogados Logo">
+            </div>
+            <div class="mobile-menu-icon" id="menu-toggle">
 
+                <i class="fas fa-bars"
+                    style="margin-top: 12px; padding-right: 50px; font-size: 25px; color: white;"></i>
+
+            </div>
+        </div>
+
+        <div class="mobile-menu-overlay" id="menu-overlay"></div>
+
+        <div class="mobile-menu-content" id="menu-content">
+            <div class="mobile-menu-header">
+                <div class="mobile-menu-logo">
+                    <img src="../imagens/logo.png" alt="Barrueco Advogados Logo">
+                </div>
+                <div class="mobile-close-btn" id="menu-close">
+                    <span class="close-line close-line1"></span>
+                    <span class="close-line close-line2"></span>
+                </div>
+            </div>
+
+            <nav class="mobile-nav">
+                <ul class="mobile-menu-list">
+                    <li class="mobile-menu-item">
+                        <a href="../index.html#inicio" class="mobile-menu-link">
+                            <i class="fas fa-home"></i>
+                            <span>Início</span>
+                        </a>
+                    </li>
+                    <li class="mobile-menu-item">
+                        <a href="sobre.html" class="mobile-menu-link">
+                            <i class="fas fa-info-circle"></i>
+                            <span>Sobre</span>
+                        </a>
+                    </li>
+                    <li class="mobile-menu-item">
+                        <a href="atuacao.html" class="mobile-menu-link">
+                            <i class="fas fa-briefcase"></i>
+                            <span>Atuação</span>
+                        </a>
+                    </li>
+                    <li class="mobile-menu-item">
+                        <a href="equipe.html" class="mobile-menu-link">
+                            <i class="fas fa-users"></i>
+                            <span>Equipe</span>
+                        </a>
+                    </li>
+
+                    <li class="mobile-menu-item">
+                        <a href="noticias.html" class="mobile-menu-link">
+                            <i class="fas fa-newspaper"></i>
+                            <span>Notícias</span>
+                        </a>
+                    </li>
+
+                    <li class="mobile-menu-item">
+                        <a href="contato.html" class="mobile-menu-link">
+                            <i class="fas fa-phone"></i>
+                            <span>Contato</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="mobile-menu-footer">
+
+                <div class="mobile-social-links">
+                    <a target= "_blank"href="https://www.instagram.com/barruecoadvogados/ " class="mobile-social-link">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a target= "_blank"href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A65884616&keywords=barrueco%20advogados%20associados&origin=RICH_QUERY_SUGGESTION&position=0&searchId=de61023f-f77c-4255-96d4-7320a46a955d&sid=~Lj&spellCorrectionEnabled=false " class="mobile-social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a target= "_blank"href="https://wa.me/5514981111872" class="mobile-social-link">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a target= "_blank" href="https://www.facebook.com/search/top?q=barrueco%20advogados%20associados" class= "mobile-social-link"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
     <main class="main-content">
         <div class="container">
             <section class="section">
@@ -684,17 +768,184 @@
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="../index.html#inicio">Início</a>
+                <a href="../index.html">Início</a>
                 <a href="sobre.html">Sobre</a>
                 <a href="atuacao.html">Atuação</a>
                 <a href="equipe.html">Equipe</a>
-                <a href="../index.html#contato">Contato</a>
+                <a href="noticias.html">Notícias</a>
+                <a href="contato.html">Contato</a>
             </div>
-            <p>&copy; 2025 Barrueco Advogados. Todos os direitos reservados.</p>
+            <p>&copy; 2025 Barrueco Advogados - Todos os direitos reservados</p>
         </div>
     </footer>
 
     <script>
+         document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuClose = document.getElementById('menu-close');
+            const menuContent = document.getElementById('menu-content');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const body = document.body;
+
+            // Função para abrir o menu
+            function openMenu() {
+                menuContent.classList.add('active');
+                menuOverlay.classList.add('active');
+                hamburgerMenu.classList.add('active');
+                body.style.overflow = 'hidden'; // Previne scroll do body
+
+                // Adiciona animação de entrada aos itens do menu
+                const menuItems = document.querySelectorAll('.mobile-menu-item');
+                menuItems.forEach((item, index) => {
+                    item.style.animationDelay = `${(index + 1) * 0.1}s`;
+                });
+            }
+
+            // Função para fechar o menu
+            function closeMenu() {
+                menuContent.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                hamburgerMenu.classList.remove('active');
+                body.style.overflow = ''; // Restaura scroll do body
+            }
+
+            // Event listener para abrir o menu
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    openMenu();
+                });
+            }
+
+            // Event listener para fechar o menu (botão X)
+            if (menuClose) {
+                menuClose.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    closeMenu();
+                });
+            }
+
+            // Event listener para fechar o menu (clique no overlay)
+            if (menuOverlay) {
+                menuOverlay.addEventListener('click', function () {
+                    closeMenu();
+                });
+            }
+
+            // Fechar menu ao clicar em um link (navegação)
+            const menuLinks = document.querySelectorAll('.mobile-menu-link');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    // Se o link for para uma âncora na mesma página
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        closeMenu();
+
+                        // Smooth scroll para a seção
+                        const targetSection = document.querySelector(href);
+                        if (targetSection) {
+                            setTimeout(() => {
+                                targetSection.scrollIntoView({
+                                    behavior: 'smooth',
+                                    block: 'start'
+                                });
+                            }, 300); // Delay para permitir que o menu feche primeiro
+                        }
+                    } else {
+                        // Para links externos, apenas fecha o menu
+                        closeMenu();
+                    }
+
+                    // Adiciona efeito visual de clique
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Fechar menu com tecla ESC
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && menuContent.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
+
+            // Prevenir scroll quando o menu estiver aberto
+            menuContent.addEventListener('touchmove', function (e) {
+                e.stopPropagation();
+            });
+
+            // Efeito de hover nos links sociais
+            const socialLinks = document.querySelectorAll('.mobile-social-link');
+            socialLinks.forEach(link => {
+                link.addEventListener('mouseenter', function () {
+                    this.style.transform = 'translateY(-3px) scale(1.1)';
+                });
+
+                link.addEventListener('mouseleave', function () {
+                    this.style.transform = '';
+                });
+            });
+
+            // Adicionar efeito de ripple nos links do menu
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+
+                    ripple.style.cssText = `
+                position: absolute;
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                background: rgba(166, 139, 91, 0.3);
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+            `;
+
+                    this.style.position = 'relative';
+                    this.appendChild(ripple);
+
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Adicionar animação de entrada para os ícones
+            const menuIcons = document.querySelectorAll('.mobile-menu-link i');
+            menuIcons.forEach((icon, index) => {
+                icon.addEventListener('mouseenter', function () {
+                    this.style.animation = 'bounce 0.6s ease';
+                });
+
+                icon.addEventListener('animationend', function () {
+                    this.style.animation = '';
+                });
+            });
+
+            // Detectar orientação do dispositivo e ajustar menu
+            function handleOrientationChange() {
+                if (menuContent.classList.contains('active')) {
+                    setTimeout(() => {
+                        // Reajustar posições se necessário
+                        menuContent.style.height = '100vh';
+                    }, 100);
+                }
+            }
+
+            window.addEventListener('orientationchange', handleOrientationChange);
+            window.addEventListener('resize', handleOrientationChange);
+        });
         let currentSlideIndex = 0;
         const slides = document.querySelectorAll('.slider-slide');
         const totalSlides = slides.length;

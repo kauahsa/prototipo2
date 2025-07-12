@@ -1104,6 +1104,7 @@ footer p {
     cursor:pointer;
 }
 #zap {
+    text-decoration: none;
     position: fixed;
     z-index: 100;
     bottom: 20px;
