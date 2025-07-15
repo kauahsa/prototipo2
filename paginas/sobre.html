@@ -79,14 +79,14 @@
             position: relative;
             overflow: hidden;
             border-radius: 15px;
-           
+
         }
 
         .about-image h1 {
             margin: 0;
             padding: 10px 0;
             background-color: transparent;
-            color:#695643;
+            color: #695643;
             /* ou a cor que quiser */
             text-align: center;
         }
@@ -396,6 +396,7 @@
         @media (max-width: 768px) {
             .about-grid {
                 grid-template-columns: 1fr;
+                
                 gap: 40px;
             }
 
@@ -481,9 +482,9 @@
                 <nav>
                     <ul>
                         <li><a href="../index.html#inicio" class="menu-link">Início</a></li>
-                        <li><a href="sobre.html" class="menu-link">Sobre</a></li>
+                        <li><a href="sobre.html" class="menu-link active">Sobre</a></li>
                         <li><a href="atuacao.html" class="menu-link">Atuação</a></li>
-                        <li><a href="equipe.html" class="menu-link active">Equipe</a></li>
+                        <li><a href="equipe.html" class="menu-link">Equipe</a></li>
                         <li><a href="noticias.html" class="menu-link">Notícias</a></li>
                         <li><a href="contato.html" class="menu-link">Contato</a></li>
                         <li><a href="https://portaldeservicos.pdpj.jus.br/consulta"><button style="margin-left: 90px;"
@@ -564,16 +565,19 @@
             <div class="mobile-menu-footer">
 
                 <div class="mobile-social-links">
-                    <a target= "_blank"href="https://www.instagram.com/barruecoadvogados/ " class="mobile-social-link">
+                    <a target="_blank" href="https://www.instagram.com/barruecoadvogados/ " class="mobile-social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a target= "_blank"href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A65884616&keywords=barrueco%20advogados%20associados&origin=RICH_QUERY_SUGGESTION&position=0&searchId=de61023f-f77c-4255-96d4-7320a46a955d&sid=~Lj&spellCorrectionEnabled=false " class="mobile-social-link">
+                    <a target="_blank"
+                        href="https://www.linkedin.com/search/results/all/?fetchDeterministicClustersOnly=true&heroEntityKey=urn%3Ali%3Aorganization%3A65884616&keywords=barrueco%20advogados%20associados&origin=RICH_QUERY_SUGGESTION&position=0&searchId=de61023f-f77c-4255-96d4-7320a46a955d&sid=~Lj&spellCorrectionEnabled=false "
+                        class="mobile-social-link">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a target= "_blank"href="https://wa.me/5514981111872" class="mobile-social-link">
+                    <a target="_blank" href="https://wa.me/5514981111872" class="mobile-social-link">
                         <i class="fab fa-whatsapp"></i>
                     </a>
-                    <a target= "_blank" href="https://www.facebook.com/search/top?q=barrueco%20advogados%20associados" class= "mobile-social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a target="_blank" href="https://www.facebook.com/search/top?q=barrueco%20advogados%20associados"
+                        class="mobile-social-link"><i class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
         </div>
@@ -600,7 +604,7 @@
                             Mais do que prestar serviços jurídicos, cultivamos relações de confiança e parceria
                             de longo prazo.</p>
                     </div>
-
+                    
                     <div class="about-image">
                         <h1>Conheça nosso Escritório</h1>
                         <div class="slider-container" style="background-color: transparent;">
@@ -714,7 +718,8 @@
                         <div class="timeline-date">2004</div>
                         <div class="timeline-content">
                             <h4>Nova Sede</h4>
-                            <p>Muda-se a sede para o Edifício Sant James na Avenida Cidade Jardim 377, Itaim Bibi, São Paulo.</p>
+                            <p>Muda-se a sede para o Edifício Sant James na Avenida Cidade Jardim 377, Itaim
+                                Bibi, São Paulo.</p>
                         </div>
                     </div>
                     <div class="timeline-item">
@@ -771,7 +776,9 @@
             </div>
         </section>
     </main>
-
+ <a href="https://wa.me/5514981111872" id="zap" style="text-decoration: none;" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+      </a>
     <footer>
         <div class="container">
             <div class="footer-links">
@@ -787,7 +794,7 @@
     </footer>
 
     <script>
-         document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function () {
             const menuToggle = document.getElementById('menu-toggle');
             const menuClose = document.getElementById('menu-close');
             const menuContent = document.getElementById('menu-content');

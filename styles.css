@@ -137,7 +137,7 @@ nav ul li {
     content: '';
     position: absolute;
     width: 0;
-    height: 2px;
+    height: 1.5px;
     bottom: -5px;
     left: 0;
     background: linear-gradient(135deg, var(--secondary), var(--accent));
