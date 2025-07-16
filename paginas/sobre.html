@@ -56,8 +56,9 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
-            align-items: center;
-            margin-bottom: 80px;
+            align-items: start;
+            margin-bottom: 10px;
+            justify-items: center;
         }
 
         .about-text h3 {
@@ -68,10 +69,32 @@
         }
 
         .about-text p {
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1.8;
             margin-bottom: 20px;
             color: #555;
+        }
+
+        .about-text {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .primeiro-paragrafo {
+            grid-column: 1;
+           width: 100%;
+        }
+
+        .segundo-paragrafo {
+            grid-column: 1 / -1;
+            /* Ocupa todas as colunas */
+            width: 100%;
+        }
+
+        .terceiro-paragrafo {
+            grid-column: 1;
+            width: 100%;
         }
 
         /* Slider Styles */
@@ -82,6 +105,7 @@
 
         }
 
+
         .about-image h1 {
             margin: 0;
             padding: 10px 0;
@@ -90,14 +114,20 @@
             /* ou a cor que quiser */
             text-align: center;
         }
+        .mobile{
+            width: 100%;
+        }
 
 
         .slider-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 500px;
+            /* Altura para desktop */
             overflow: hidden;
             border-radius: 15px;
+            max-width: 90%;
+            margin: 0 auto;
         }
 
         .slider-wrapper {
@@ -105,6 +135,7 @@
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
             height: 100%;
         }
+
 
         .slider-slide {
             min-width: 100%;
@@ -175,6 +206,9 @@
         .slider-nav:hover i {
             color: white;
         }
+        #especial{
+            display: none;
+        }
 
         /* Dots Indicator */
         .slider-dots {
@@ -203,6 +237,10 @@
             transform: scale(1.2);
         }
 
+        .mobile {
+
+            width: 300px;
+        }
 
         /* Values Section */
         .values-section {
@@ -395,54 +433,80 @@
         /* Responsive */
         @media (max-width: 768px) {
             .about-grid {
-                grid-template-columns: 1fr;
-                
+                grid-template-columns: 1fr 1fr;
+                justify-items: stretch;
                 gap: 40px;
             }
 
-            .slider-container {
-                height: 300px;
+            #especial{
+                display: contents;
             }
+        .section{
+            padding: 60px 0px 0px 10px;
+        }
+        .about-text p {
+            font-size: 0.9rem;}
+            
 
-            .slide-content h4 {
-                font-size: 1.5rem;
-            }
+        .slider-container {
+            height: 300px;
+            /* Altura reduzida para mobile */
+            max-width: 95%;
+            /* Largura um pouco maior em mobile */
+        }
 
-            .slide-content p {
-                font-size: 1rem;
-            }
+        /* Ajuste opcional para o título acima do slider */
+        .about-image h1 {
+            font-size: 1.5rem;
+        }
 
-            .slider-nav {
-                width: 40px;
-                height: 40px;
-            }
+        .especial2{
+            display: none;
+        }
+        .mobile {
+            margin-top: 120px;
+            width: 155px;
+        }
 
-            .slider-nav.prev {
-                left: 10px;
-            }
+        .slide-content h4 {
+            font-size: 1.5rem;
+        }
 
-            .slider-nav.next {
-                right: 10px;
-            }
+        .slide-content p {
+            font-size: 1rem;
+        }
 
-            .section-title h2 {
-                font-size: 2rem;
-            }
+        .slider-nav {
+            width: 40px;
+            height: 40px;
+        }
 
-            .timeline::before {
-                left: 20px;
-            }
+        .slider-nav.prev {
+            left: 10px;
+        }
 
-            .timeline-content {
-                margin-left: 70px !important;
-                margin-right: 0 !important;
-                width: calc(100% - 80px);
-            }
+        .slider-nav.next {
+            right: 10px;
+        }
 
-            .timeline-date {
-                left: 20px;
-                transform: none;
-            }
+        .section-title h2 {
+            font-size: 2rem;
+        }
+
+        .timeline::before {
+            left: 20px;
+        }
+
+        .timeline-content {
+            margin-left: 70px !important;
+            margin-right: 0 !important;
+            width: calc(100% - 80px);
+        }
+
+        .timeline-date {
+            left: 20px;
+            transform: none;
+        }
         }
 
         @media (max-width: 480px) {
@@ -457,7 +521,8 @@
             }
 
             .slider-container {
-                height: 250px;
+                height: 300px;
+                /* Mantém 300px mesmo em telas muito pequenas */
             }
 
             .slide-content {
@@ -588,74 +653,88 @@
                 <div class="about-grid">
                     <div class="about-text">
                         <h3>Nossa História</h3>
-                        <p>Fundado há mais de 20 anos, o escritório Barrueco Advogados Associados nasceu
+                        <p class="primeiro-paragrafo">Fundado há mais de 20 anos, o escritório Barrueco Advogados
+                            Associados nasceu
                             com a proposta de unir conhecimento técnico aprofundado, próprio dos grandes
-                            escritórios, a um atendimento próximo, direto e personalizado. Desde o início,
+                            escritórios, a um atendimento próximo, direto e personalizado.</p><p class="especial2">Desde o início,
                             construímos nossa trajetória com base na ética, na transparência e na dedicação
                             integral aos interesses de nossos clientes.
                             Nossa atuação é pautada na proximidade com o cliente: cada caso é conduzido
                             com acompanhamento direto pelos sócios, proporcionando segurança, agilidade
                             e soluções jurídicas alinhadas à realidade de cada cliente, seja pessoa física,
                             empresa ou grupo familiar.</p>
-                        <p>Com ampla experiência nas áreas Tributária, Empresarial, Societária, Cível e
+                        <p class="especial2" >Com ampla experiência nas áreas Tributária, Empresarial,
+                            Societária, Cível e
                             Trabalhista, buscamos não apenas resolver conflitos, mas também antecipar
                             riscos e estruturar soluções jurídicas seguras e estratégicas, sempre com foco na
                             proteção patrimonial e na estabilidade jurídica de nossos clientes.
                             Mais do que prestar serviços jurídicos, cultivamos relações de confiança e parceria
                             de longo prazo.</p>
                     </div>
-                    
                     <div class="about-image">
-                        <h1>Conheça nosso Escritório</h1>
-                        <div class="slider-container" style="background-color: transparent;">
-                            <div class="slider-wrapper" id="sliderWrapper">
-                                <div class="slider-slide slide-1"
-                                    style="background-image: url(../imagens/escritorio/entrada.jpg); background-position: center center; background-size: cover;">
+                        <img class="mobile" src="../imagens/escritorio/predio.jpg" alt="Prédio do Escritório"
+                            style=" border-radius:15px;">
+                    </div>
+                </div>
+                <div class="about-text" id="especial">
+                     <p>Desde o início,
+                            construímos nossa trajetória com base na ética, na transparência e na dedicação
+                            integral aos interesses de nossos clientes.
+                            Nossa atuação é pautada na proximidade com o cliente: cada caso é conduzido
+                            com acompanhamento direto pelos sócios, proporcionando segurança, agilidade
+                            e soluções jurídicas alinhadas à realidade de cada cliente, seja pessoa física,
+                            empresa ou grupo familiar.</p>
+                        <p >Com ampla experiência nas áreas Tributária, Empresarial,
+                            Societária, Cível e
+                            Trabalhista, buscamos não apenas resolver conflitos, mas também antecipar
+                            riscos e estruturar soluções jurídicas seguras e estratégicas, sempre com foco na
+                            proteção patrimonial e na estabilidade jurídica de nossos clientes.
+                            Mais do que prestar serviços jurídicos, cultivamos relações de confiança e parceria
+                            de longo prazo.</p>
+                </div>
 
-                                </div>
-                                <div class="slider-slide slide-2"
-                                    style="background-image: url(../imagens/escritorio/sala.jpg); background-position: center center; background-size: cover;">
-
-                                </div>
-                                <div class="slider-slide slide-3"
-                                    style="background-image: url(../imagens/escritorio/sala2.jpg); background-position: center center; background-size: cover;">
-
-                                </div>
-                                <div class="slider-slide slide-4"
-                                    style="background-image: url(../imagens/escritorio/cafeteria.jpg); background-position: center center; background-size: cover;">
-
-                                </div>
-                                <div class="slider-slide slide-5"
-                                    style="background-image: url(../imagens/escritorio/varanda.jpg); background-position: center center; background-size: cover;">
-
-                                </div>
-                                <div class="slider-slide slide-6"
-                                    style="background-image: Url(../imagens/escritorio/predio.jpg), linear-gradient(135deg, rgba(105, 86, 67, 0.7), rgba(72, 98, 108, 0.7)); background-size:contain; background-repeat:no-repeat; ">
-
-                                </div>
+                <div class="about-image"
+                    style="grid-column: 1 / -1; margin-top: 40px; max-width: 90%; margin-left: auto; margin-right: auto;">
+                    <h1>Conheça nosso Escritório</h1>
+                    <div class="slider-container" style="background-color: transparent;">
+                        <div class="slider-wrapper" id="sliderWrapper">
+                            <div class="slider-slide slide-1"
+                                style="background-image: url(../imagens/escritorio/entrada.jpg); background-position: center; background-size: cover;">
+                            </div>
+                            <div class="slider-slide slide-2"
+                                style="background-image: url(../imagens/escritorio/sala.jpg); background-position: center; background-size: cover;">
+                            </div>
+                            <div class="slider-slide slide-3"
+                                style="background-image: url(../imagens/escritorio/sala2.jpg); background-position: center center; background-size: cover;">
+                            </div>
+                            <div class="slider-slide slide-4"
+                                style="background-image: url(../imagens/escritorio/cafeteria.jpg); background-position: center center; background-size: cover;">
+                            </div>
+                            <div class="slider-slide slide-5"
+                                style="background-image: url(../imagens/escritorio/varanda.jpg); background-position: center; background-size: cover;">
                             </div>
 
-                            <button class="slider-nav prev" onclick="changeSlide(-1)">
-                                <i class="fas fa-chevron-left"></i>
-                            </button>
-                            <button class="slider-nav next" onclick="changeSlide(1)">
-                                <i class="fas fa-chevron-right"></i>
-                            </button>
+                        </div>
 
-                            <div class="slider-dots">
-                                <button class="dot active" onclick="currentSlide(1)"></button>
-                                <button class="dot" onclick="currentSlide(2)"></button>
-                                <button class="dot" onclick="currentSlide(3)"></button>
-                                <button class="dot" onclick="currentSlide(4)"></button>
-                                <button class="dot" onclick="currentSlide(5)"></button>
-                                <button class="dot" onclick="currentSlide(6)"></button>
-                            </div>
+                        <button class="slider-nav prev" onclick="changeSlide(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="slider-nav next" onclick="changeSlide(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+
+                        <div class="slider-dots">
+                            <button class="dot active" onclick="currentSlide(1)"></button>
+                            <button class="dot" onclick="currentSlide(2)"></button>
+                            <button class="dot" onclick="currentSlide(3)"></button>
+                            <button class="dot" onclick="currentSlide(4)"></button>
+                            <button class="dot" onclick="currentSlide(5)"></button>
+
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-
         <section class="values-section">
             <div class="container">
                 <div class="section-title">
@@ -776,9 +855,9 @@
             </div>
         </section>
     </main>
- <a href="https://wa.me/5514981111872" id="zap" style="text-decoration: none;" target="_blank">
+    <a href="https://wa.me/5514981111872" id="zap" style="text-decoration: none;" target="_blank">
         <i class="fab fa-whatsapp"></i>
-      </a>
+    </a>
     <footer>
         <div class="container">
             <div class="footer-links">
