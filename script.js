@@ -28,6 +28,7 @@
 
             sections.forEach(section => observer.observe(section));
         });
+        
 
     // JavaScript para Menu Mobile Moderno
 document.addEventListener('DOMContentLoaded', function() {
@@ -409,3 +410,70 @@ function reinitializeTestimonialsSwiper() {
         });
     }, 100);
 }
+
+ document.addEventListener('DOMContentLoaded', function() {
+            const clientsSwiper = new Swiper('.clients-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.clients-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.clients-next',
+                    prevEl: '.clients-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 2,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 4,
+                        spaceBetween: 30,
+                    },
+                }
+            });
+        });
+         document.addEventListener('DOMContentLoaded', function() {
+            const newsSwiper = new Swiper('.news-swiper', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.news-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.news-next',
+                    prevEl: '.news-prev',
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                        spaceBetween: 20,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                }
+            });
+        });
