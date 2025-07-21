@@ -1,5 +1,259 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso - Barrueco Advogados</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #695643;
+            --primary-dark: #4a3c2e;
+            --primary-light: #857865;
+            --secondary: #8b7355;
+            --accent: #a68b5b;
+            --tertiary: #5d4e3a;
+            --light: #faf9f7;
+            --light-gray: #f2f0ec;
+            --medium-gray: #d4d0c8;
+            --dark: #2d251a;
+            --white: #ffffff;
+            --text-light: #6b635a;
+            --text-dark: #3d3529;
+            --shadow-light: rgba(105, 86, 67, 0.1);
+            --shadow-medium: rgba(105, 86, 67, 0.2);
+            --shadow-dark: rgba(105, 86, 67, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* Simulação de página de fundo */
+        .page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px var(--shadow-light);
+        }
+
+        .page-content h1 {
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .page-content p {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        /* Overlay do popup */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(45, 37, 26, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Container do popup */
+        .popup-container {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px var(--shadow-dark);
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+
+        .popup-overlay.active .popup-container {
+            transform: translateY(0);
+        }
+
+        /* Header do popup */
+        .popup-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 25px 30px;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .popup-icon {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .popup-title {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin: 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Corpo do popup */
+        .popup-body {
+            padding: 35px 30px;
+            text-align: center;
+        }
+
+        .popup-message {
+            color: var(--text-dark);
+            font-size: 1.15rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .popup-submessage {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        /* Botão */
+        .btn-return {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 15px 35px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            min-width: 200px;
+            box-shadow: 0 4px 15px var(--shadow-medium);
+        }
+
+        .btn-return:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--tertiary));
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px var(--shadow-dark);
+        }
+
+        .btn-return:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-return i {
+            margin-right: 8px;
+        }
+
+        /* Botão de fechar */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .close-btn:hover {
+            opacity: 1;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsividade */
+        @media (max-width: 600px) {
+            .popup-container {
+                margin: 20px;
+                width: calc(100% - 40px);
+            }
+
+            .popup-header {
+                padding: 20px;
+            }
+
+            .popup-body {
+                padding: 25px 20px;
+            }
+
+            .btn-return {
+                width: 100%;
+                padding: 18px;
+            }
+
+            .popup-icon {
+                font-size: 3rem;
+            }
+
+            .popup-title {
+                font-size: 1.4rem;
+            }
+
+            .popup-message {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animação de entrada suave */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .popup-container {
+            animation: fadeInUp 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Conteúdo simulado da página -->
+   <!DOCTYPE html>
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -1955,229 +2209,131 @@
         </div>
     </footer>
 
+    <!-- Popup de Aviso -->
+    <div class="popup-overlay" id="popupOverlay">
+        <div class="popup-container">
+            <div class="popup-header">
+              
+                
+                <div class="popup-icon">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <h2 class="popup-title">Aviso Importante</h2>
+            </div>
+            
+            <div class="popup-body">
+                <p class="popup-message">
+                   Essa sessão está inativa no momento
+                </p>
+                <p class="popup-submessage">
+                    Para continuar navegando em nosso site, clique no botão abaixo.
+                </p>
+                
+                <button class="btn-return" onclick="returnToSite()">
+                    <i class="fas fa-arrow-left"></i>
+                    Retornar ao Site
+                </button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // Script para filtros
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', function () {
-                // Remove a classe 'active' de todos os botões
-                document.querySelectorAll('.filter-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
+        // Elementos DOM
+        const overlay = document.getElementById('popupOverlay');
 
-                // Adiciona a classe 'active' ao botão clicado
-                this.classList.add('active');
-
-                // Aqui entraria a lógica de filtragem (em uma implementação real)
-                // Por exemplo, mostrando apenas notícias da categoria selecionada
-            });
-        });
-
-        // Script para scrolling suave
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.getElementById('menu-toggle');
-            const menuClose = document.getElementById('menu-close');
-            const menuContent = document.getElementById('menu-content');
-            const menuOverlay = document.getElementById('menu-overlay');
-            const hamburgerMenu = document.querySelector('.hamburger-menu');
-            const body = document.body;
-
-            // Função para abrir o menu
-            function openMenu() {
-                menuContent.classList.add('active');
-                menuOverlay.classList.add('active');
-                hamburgerMenu.classList.add('active');
-                body.style.overflow = 'hidden'; // Previne scroll do body
-
-                // Adiciona animação de entrada aos itens do menu
-                const menuItems = document.querySelectorAll('.mobile-menu-item');
-                menuItems.forEach((item, index) => {
-                    item.style.animationDelay = `${(index + 1) * 0.1}s`;
-                });
-            }
-
-            // Função para fechar o menu
-            function closeMenu() {
-                menuContent.classList.remove('active');
-                menuOverlay.classList.remove('active');
-                hamburgerMenu.classList.remove('active');
-                body.style.overflow = ''; // Restaura scroll do body
-            }
-
-            // Event listener para abrir o menu
-            if (menuToggle) {
-                menuToggle.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    openMenu();
-                });
-            }
-
-            // Event listener para fechar o menu (botão X)
-            if (menuClose) {
-                menuClose.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    closeMenu();
-                });
-            }
-
-            // Event listener para fechar o menu (clique no overlay)
-            if (menuOverlay) {
-                menuOverlay.addEventListener('click', function () {
-                    closeMenu();
-                });
-            }
-
-            // Fechar menu ao clicar em um link (navegação)
-            const menuLinks = document.querySelectorAll('.mobile-menu-link');
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    // Se o link for para uma âncora na mesma página
-                    const href = this.getAttribute('href');
-                    if (href && href.startsWith('#')) {
-                        e.preventDefault();
-                        closeMenu();
-
-                        // Smooth scroll para a seção
-                        const targetSection = document.querySelector(href);
-                        if (targetSection) {
-                            setTimeout(() => {
-                                targetSection.scrollIntoView({
-                                    behavior: 'smooth',
-                                    block: 'start'
-                                });
-                            }, 300); // Delay para permitir que o menu feche primeiro
-                        }
-                    } else {
-                        // Para links externos, apenas fecha o menu
-                        closeMenu();
-                    }
-
-                    // Adiciona efeito visual de clique
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
-
-            // Fechar menu com tecla ESC
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && menuContent.classList.contains('active')) {
-                    closeMenu();
-                }
-            });
-
-            // Prevenir scroll quando o menu estiver aberto
-            menuContent.addEventListener('touchmove', function (e) {
-                e.stopPropagation();
-            });
-
-            // Efeito de hover nos links sociais
-            const socialLinks = document.querySelectorAll('.mobile-social-link');
-            socialLinks.forEach(link => {
-                link.addEventListener('mouseenter', function () {
-                    this.style.transform = 'translateY(-3px) scale(1.1)';
-                });
-
-                link.addEventListener('mouseleave', function () {
-                    this.style.transform = '';
-                });
-            });
-
-            // Adicionar efeito de ripple nos links do menu
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function (e) {
-                    const ripple = document.createElement('span');
-                    const rect = this.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-
-                    ripple.style.cssText = `
-                position: absolute;
-                width: ${size}px;
-                height: ${size}px;
-                left: ${x}px;
-                top: ${y}px;
-                background: rgba(166, 139, 91, 0.3);
-                border-radius: 50%;
-                transform: scale(0);
-                animation: ripple 0.6s ease-out;
-                pointer-events: none;
-            `;
-
-                    this.style.position = 'relative';
-                    this.appendChild(ripple);
-
-                    setTimeout(() => {
-                        ripple.remove();
-                    }, 600);
-                });
-            });
-
-            // Adicionar animação de entrada para os ícones
-            const menuIcons = document.querySelectorAll('.mobile-menu-link i');
-            menuIcons.forEach((icon, index) => {
-                icon.addEventListener('mouseenter', function () {
-                    this.style.animation = 'bounce 0.6s ease';
-                });
-
-                icon.addEventListener('animationend', function () {
-                    this.style.animation = '';
-                });
-            });
-
-            // Detectar orientação do dispositivo e ajustar menu
-            function handleOrientationChange() {
-                if (menuContent.classList.contains('active')) {
-                    setTimeout(() => {
-                        // Reajustar posições se necessário
-                        menuContent.style.height = '100vh';
-                    }, 100);
-                }
-            }
-
-            window.addEventListener('orientationchange', handleOrientationChange);
-            window.addEventListener('resize', handleOrientationChange);
-        });
-
-        // CSS adicional para animações (adicionar ao CSS)
-        const additionalStyles = `
-    @keyframes ripple {
-        to {
-            transform: scale(4);
-            opacity: 0;
+        // Mostrar popup automaticamente
+        function showPopup() {
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
-    }
+
+        function returnToSite() {
+    window.location.href = "../index.html";
     
-    @keyframes bounce {
-        0%, 20%, 60%, 100% {
-            transform: translateY(0);
-        }
-        40% {
-            transform: translateY(-10px);
-        }
-        80% {
-            transform: translateY(-5px);
-        }
-    }
-`;
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+        
+}
 
+        // Fechar popup
+        function closePopup() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            showNotification('Popup fechado com sucesso!', 'success');
+        }
 
-        // Injetar CSS adicional
-        const styleSheet = document.createElement('style');
-        styleSheet.textContent = additionalStyles;
-        document.head.appendChild(styleSheet);
+        // Retornar ao site
+        
+
+        // Mostrar notificação
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? 'var(--accent)' : type === 'warning' ? '#d32f2f' : 'var(--primary)'};
+                color: var(--white);
+                padding: 15px 25px;
+                border-radius: 8px;
+                box-shadow: 0 4px 15px var(--shadow-medium);
+                z-index: 10001;
+                font-weight: 600;
+                opacity: 0;
+                transform: translateY(-20px);
+                transition: all 0.3s ease;
+                max-width: 300px;
+            `;
+            
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
+                ${message}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Animar entrada
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateY(0)';
+            }, 10);
+            
+            // Remover após 3 segundos
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Fechar popup com tecla ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) {
+                closePopup();
+            }
+        });
+
+        // Fechar popup clicando fora dele
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                closePopup();
+            }
+        });
+
+        // Inicializar quando a página carregar
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Pop-up de aviso carregado');
+            
+            // Mostrar popup automaticamente após 2 segundos
+            setTimeout(() => {
+                showPopup();
+            }, 0);
+        });
     </script>
 </body>
-
 </html>
